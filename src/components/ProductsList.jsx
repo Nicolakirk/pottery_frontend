@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../utils/api";
 import ProductCard from "./ProductCard";
+import { Row, Col } from 'react-bootstrap'
 
 
 const Productslist = ()=>{
@@ -22,17 +23,17 @@ useEffect(() =>{
     }
 return (
     <div>
-    <p> Welcome to the pottery store</p>
-    <ul>
+    <p align="center" className="p-3"> Welcome to the pottery store</p>
+    <Row xs ={1} md={3} className="g-4">
+            
         {productslist.map((product) =>{
-            return ( <ProductCard product={product} productsList={productslist} setProductsList={setProductsList}/>)
+            
+            return (  
+                 <ProductCard product={product} productsList={productslist} setProductsList={setProductsList}/>)
+         
+        }) }
 
-        })
-        
-        
-        }
-
-    </ul>
+    </Row>
     </div>
 )
 }

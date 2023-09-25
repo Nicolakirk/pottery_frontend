@@ -10,3 +10,10 @@ export const fetchProducts = () =>{
         return response.data.products
     })
 }
+
+export const fetchProductsById = (id) =>{
+    return potteryApi.get(`/products/${id}`).then
+    ((response)=>{
+        return response.data.products
+    })
+}
