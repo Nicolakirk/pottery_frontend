@@ -12,8 +12,10 @@ export const fetchProducts = () =>{
 }
 
 export const fetchProductsById = (id) =>{
+  
     return potteryApi.get(`/products/${id}`).then
     ((response)=>{
-        return response.data.products
+       
+        return response.data.product
     })
 }

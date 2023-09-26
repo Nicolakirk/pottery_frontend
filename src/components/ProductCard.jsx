@@ -5,8 +5,8 @@ import { useContext } from "react";
 
 const ProductCard = ({product, setProductsList, productsList})=>{
  const cart = useContext(CartContext);
-
-
+const productQuantity = cart.getProductQuantity(product.product_id)
+console.log(productQuantity)
     return (
         <Col align="center">
        <Card align="center" key = {product.product_id}>
@@ -17,8 +17,22 @@ const ProductCard = ({product, setProductsList, productsList})=>{
     width={250}
     height={250} ></img>
 
-<Card.Text>£{product.price}</Card.Text> 
-<Button variant="primary"> Add To Cart</Button>
+    <Card.Text>£{product.price}</Card.Text> 
+    { productQuantity > 0 ?
+    <>
+    <Form as={Row}>
+        <Form.Label coluumn="true" sm="6">In cart: {productQuantity}</Form.Label>
+        <Col sm="6">
+            <Button sm="6" onClick={()=>cart.addOneToCart(product.product_id)} className="mx-2">+</Button>
+            <Button sm="6" onClick={()=>cart.removeOneFromCart(product.product_id)}className="mx-2">-</Button>
+        </Col>
+    </Form>
+    <Button variant="danger" onClick={()=> cart.deleteFromCart(product.product_id)} className="my-2"> Remove From Cart</Button>
+    </>
+  
+:
+<Button variant="primary" onClick={()=> cart.addOneToCart(product.product_id)}> Add To Cart</Button>
+}
 </Card.Body>
        </Card>
        </Col>
