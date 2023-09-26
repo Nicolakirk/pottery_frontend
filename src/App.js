@@ -7,11 +7,13 @@ import { Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap'
 import Success from './components/Success';
 import Cancel from './components/Cancel';
+import CartProvider from './CartContext';
 
 
 function App() {
   return (
-    <div className="App">
+   
+      <CartProvider>
       <Container>
   <NavBar/>
        <Routes>
@@ -21,7 +23,8 @@ function App() {
         <Route path="cancel" element = {<Cancel/>}/>
       </Routes>
       </Container>
-    </div>
+      </CartProvider>
+
   );
 }
 
