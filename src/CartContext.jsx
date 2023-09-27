@@ -3,6 +3,9 @@ import { createContext, useState } from "react";
 import { fetchProducts, fetchProductsById } from "./utils/api";
 
 
+   
+    
+
 export const CartContext = createContext({
 items: [],
 getProductQuantity: () => {},
@@ -18,11 +21,14 @@ export function CartProvider({children}){
 const [cartProducts, setCartProducts]= useState([]);
 const[productArray, setProductArray ]= useState([]);
 const[productById, setProductById] = useState({});
+const[productPrice, setProductPrice] = useState(0);
 
    
+console.log(cartProducts)
 
     function getProducts(){
         fetchProducts().then((products)=>{
+            setProductArray(products)
             return products;
         })
     }
@@ -36,14 +42,12 @@ const[productById, setProductById] = useState({});
     };
 
     function getProductData(id) {
-        fetchProducts().then((products)=>{
-           
-    
-            let newProductData = products.find(product => product.product_id === id)
-      
-           
-            return newProductData;
-        })
+        
+            let newProductData = productArray.find(product => product.product_id === id)
+   
+        
+            return newProductData.price;
+        
        
         
     }
@@ -56,13 +60,15 @@ const[productById, setProductById] = useState({});
         return quantity;
     }
 
-    function addOneToCart(id){
+    function addOneToCart(id, title){
         const quantity = getProductQuantity(id);
         if(quantity === 0){
             setCartProducts([
                 ...cartProducts,
                 {
                     id:id, 
+                    title: title,
+                    
                     quantity:1
                 }
             ])
@@ -104,15 +110,23 @@ const[productById, setProductById] = useState({});
 
      
     function getTotalCost(){
-        let totalCost = 0;
-        console.log(cartProducts)
-        cartProducts.map((cartItem)=>{ 
-            const productData = getProductData(cartItem.id)
-            totalCost += (productData.price * cartItem.quantity)
-            console.log(productData)
+        
+       
+        let totalCost = 0
+
+        cartProducts.map((cartItem )=> { 
+           let newProductPrice =   getProductData(cartItem.id)
+           console.log("newProductPrice",newProductPrice)
+           console.log(cartItem.quantity)
+            totalCost += (newProductPrice * cartItem.quantity)
+            
         })
+       
         return totalCost;
      };
+
+
+      
 
      const contextValue ={
         items:cartProducts,

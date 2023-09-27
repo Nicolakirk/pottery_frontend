@@ -4,11 +4,11 @@ import ProductCard from "./ProductCard";
 import { Row, Col } from 'react-bootstrap'
 
 
-const Productslist = ()=>{
-const[isLoading, setIsLoading] = useState("");
-const[productslist, setProductsList]
-= useState([])
+const Productslist = (  )=>{
 
+const[isLoading, setIsLoading] = useState("");
+const[productslist, setProductsList] = useState([])
+console.log(productslist)
 
 
 useEffect(() =>{

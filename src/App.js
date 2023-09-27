@@ -7,18 +7,22 @@ import { Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap'
 import Success from './components/Success';
 import Cancel from './components/Cancel';
-import CartProvider from './CartContext';
+import CartProvider from './CartContext'
+import { useState } from 'react';
 
 
 function App() {
+
+  
+
   return (
    
-      <CartProvider>
+      <CartProvider   > 
       <Container>
-  <NavBar/>
+  <NavBar    />
        <Routes>
        
-        <Route path ='/' element = {<Productslist/>} />
+        <Route path ='/' element = {<Productslist/>}  />
         <Route path="success" element = {<Success/>}/>
         <Route path="cancel" element = {<Cancel/>}/>
       </Routes>
