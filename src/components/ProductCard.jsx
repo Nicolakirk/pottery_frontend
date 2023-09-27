@@ -5,8 +5,10 @@ import { useContext } from "react";
 
 const ProductCard = ({product, setProductsList, productsList})=>{
  const cart = useContext(CartContext);
+
 const productQuantity = cart.getProductQuantity(product.product_id)
-console.log(productQuantity)
+
+
     return (
         <Col align="center">
        <Card align="center" key = {product.product_id}>
