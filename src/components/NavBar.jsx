@@ -2,11 +2,12 @@ import { Button , Container, Navbar, Modal} from 'react-bootstrap';
 import  { useState, useContext, useEffect } from 'react'
 import { CartContext } from "../CartContext"
 import { fetchProducts } from '../utils/api';
+import CartProduct from './CartProducts';
 
 function NavBar (){
 
     const cart = useContext(CartContext);
-console.log(cart)
+
     const [productArray, setProductArray] = useState([]);
 
     useEffect(() =>{
@@ -75,10 +76,13 @@ return(
     <p>Items in your cart:</p>
     {cart.items.map((currentProduct, idx) => (
       
-        <h1>{currentProduct.id}</h1>
+      <CartProduct productArray={productArray}  getProductData={getProductData} currentProduct={currentProduct} />
     ))}
 
     <h1> total: £{getTotalCost().toFixed(2)} </h1>
+    <Button variant="success">
+        Purchase Items!
+    </Button>
     </>
     :
         <h1>There are no items in your cart</h1>
