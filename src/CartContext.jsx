@@ -34,7 +34,7 @@ console.log(cartProducts)
     }
 
     function getProductsById(id){
-        console.log(id)
+       
         fetchProductsById(id).then((product)=>{
         
           return product;
@@ -116,8 +116,8 @@ console.log(cartProducts)
 
         cartProducts.map((cartItem )=> { 
            let newProductPrice =   getProductData(cartItem.id)
-           console.log("newProductPrice",newProductPrice)
-           console.log(cartItem.quantity)
+          
+          
             totalCost += (newProductPrice * cartItem.quantity)
             
         })
