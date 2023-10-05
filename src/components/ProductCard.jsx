@@ -16,8 +16,7 @@ const productQuantity = cart.getProductQuantity(product.product_id)
             <Card.Title>  <h4>{product.title}</h4> </Card.Title>
      
         <img src = {product.article_img_url} alt={product.product_title}
-    width={250}
-    height={250} ></img>
+    class="img-thumbnail"  ></img>
 
     <Card.Text>£{product.price}</Card.Text> 
     { productQuantity > 0 ?
