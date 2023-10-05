@@ -7,7 +7,7 @@ import CartProduct from './CartProducts';
 function NavBar (){
 
     const cart = useContext(CartContext);
-
+console.log(cart.items)
     const [productArray, setProductArray] = useState([]);
 
     useEffect(() =>{
@@ -55,6 +55,23 @@ function NavBar (){
     setShow(true);
     }
 
+    const startCheckout = async () =>{
+await fetch('http://localhost:4000/checkout',{
+    method: "POST",
+    headers:{
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({items: cart.items})
+}).then((response) => {
+    return response.json();
+}).then((response) => {
+    if( response.url){
+        window.location.assign(response.url)
+    }
+}
+)
+    }
+
     const productsCount = cart.items.reduce((sum, product)=> sum + product.quantity, 0);
     
 
@@ -80,7 +97,7 @@ return(
     ))}
 
     <h1> total: £{getTotalCost().toFixed(2)} </h1>
-    <Button variant="success">
+    <Button variant="success" onClick={startCheckout}>
         Purchase Items!
     </Button>
     </>
