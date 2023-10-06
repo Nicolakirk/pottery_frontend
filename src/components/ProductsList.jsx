@@ -24,21 +24,22 @@ useEffect(() =>{
         return <p> Is loading ... </p>
     }
 return (
-    <div>
+    <>
     <p align="center" className="p-3"> Welcome to the pottery store</p>
    
     <Row xs ={1} md={3} className="g-4">
             
         {productslist.map((product) =>{
-            
+           
             return (  
+                
                  <ProductCard product={product} productsList={productslist} setProductsList={setProductsList}/>)
-         
+             
         }) }
 
     </Row>
  
-    </div>
+    </>
 )
 }
 
