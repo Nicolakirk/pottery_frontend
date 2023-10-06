@@ -1,8 +1,9 @@
-import { Button , Container, Navbar, Modal} from 'react-bootstrap';
+import { Button , Container, Navbar, Modal, NavLink, Nav} from 'react-bootstrap';
 import  { useState, useContext, useEffect } from 'react'
 import { CartContext } from "../CartContext"
 import { fetchProducts } from '../utils/api';
 import CartProduct from './CartProducts';
+import { Link } from 'react-router-dom';
 
 function NavBar (){
 
@@ -77,11 +78,15 @@ await fetch('http://localhost:4000/checkout',{
 
 return(
     <>
-    <Navbar expand ="sm">
-    <Navbar.Brand href="/"> Pottery Store</Navbar.Brand>
+    <Navbar expand ="sm"  bg="light" data-bs-theme="light" >
+    <Navbar.Brand href="/"> SAM MCLEOD</Navbar.Brand>
     <Navbar.Toggle/>
     <Navbar.Collapse className='justify-content-end'>
-    <Button onClick={handleShow}>Cart {productsCount} Items</Button>
+    <Nav.Link href="/"className='p-1' >Welcome</Nav.Link>
+    <Nav.Link href="/about" className='p-1'>About</Nav.Link>
+    <Nav.Link href="/store" className='p-1'>Store</Nav.Link>
+        
+    <Button onClick={handleShow} variant="outline-dark">Cart {productsCount} Items</Button>
        
     </Navbar.Collapse>
     </Navbar>
@@ -97,7 +102,7 @@ return(
     ))}
 
     <h1> total: £{getTotalCost().toFixed(2)} </h1>
-    <Button variant="success" onClick={startCheckout}>
+    <Button variant="dark" onClick={startCheckout}>
         Purchase Items!
     </Button>
     </>

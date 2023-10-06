@@ -9,6 +9,8 @@ import Success from './components/Success';
 import Cancel from './components/Cancel';
 import CartProvider from './CartContext'
 import { useState } from 'react';
+import Homepage from './components/Hompage';
+import About from './components/About';
 
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
   <NavBar    />
        <Routes>
        
-        <Route path ='/' element = {<Productslist/>}  />
+        <Route path ='/' element = {<Homepage/>}  />
+        <Route path ='/about' element = {<About/>}  />
+        <Route path ='/store'element = {<Productslist/>} />
         <Route path="success" element = {<Success/>}/>
         <Route path="cancel" element = {<Cancel/>}/>
       </Routes>
