@@ -10,8 +10,8 @@ const productQuantity = cart.getProductQuantity(product.product_id)
 
 
     return (
-        <Col align="center">
-       <Card align="center" key = {product.product_id}>
+        <Col align="center" className="p-3">
+       <Card align="center"  key = {product.product_id}>
         <Card.Body>
            
      

@@ -11,6 +11,8 @@ import CartProvider from './CartContext'
 import { useState } from 'react';
 import Homepage from './components/Hompage';
 import About from './components/About';
+import Footer from './components/Footer';
+import Admin from './components/Admin';
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
       <CartProvider   > 
       <Container>
   <NavBar    />
+
        <Routes>
        
         <Route path ='/' element = {<Homepage/>}  />
@@ -29,7 +32,9 @@ function App() {
         <Route path ='/store'element = {<Productslist/>} />
         <Route path="success" element = {<Success/>}/>
         <Route path="cancel" element = {<Cancel/>}/>
+        <Route path = "/admin" element ={<Admin/>}/>
       </Routes>
+      <Footer />
       </Container>
       </CartProvider>
 
