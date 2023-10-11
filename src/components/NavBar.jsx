@@ -107,7 +107,7 @@ return(
     </Button>
     </>
     :
-        <h1>There are no items in your cart</h1>
+        <h3>There are no items in your cart</h3>
     }
    
 </Modal.Body>
