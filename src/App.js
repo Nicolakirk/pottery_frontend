@@ -13,6 +13,9 @@ import Homepage from './components/Hompage';
 import About from './components/About';
 import Footer from './components/Footer';
 import Admin from './components/Admin';
+import Contact from './components/Contact';
+import CategoriesList from './components/CategoriesList';
+
 
 
 function App() {
@@ -33,6 +36,8 @@ function App() {
         <Route path="success" element = {<Success/>}/>
         <Route path="cancel" element = {<Cancel/>}/>
         <Route path = "/admin" element ={<Admin/>}/>
+        <Route path = "/contact" element ={<Contact/>}/>
+        <Route path ='/products/categories/:category' element={<CategoriesList/>}/>
       </Routes>
       <Footer />
       </Container>
